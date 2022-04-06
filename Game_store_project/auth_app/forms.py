@@ -1,41 +1,24 @@
 from django import forms
-from django.core.validators import MinValueValidator
+# from django.core.validators import MinValueValidator
 from Game_store_project.auth_app.models import UserProfile
 from django.contrib.auth import forms as auth_forms, get_user_model
 from Game_store_project.auth_app.common.custom_mixins import BootstrapFormMixin
-from Game_store_project.auth_app.validtors import validate_only_letters_numbers_underscores, validate_only_letters
+# from Game_store_project.auth_app.validtors import validate_only_letters_numbers_underscores, validate_only_letters
 
 
 UserModel = get_user_model()
 
 
 class CreateProfileForm(BootstrapFormMixin, auth_forms.UserCreationForm):
-    username = forms.CharField(
-        max_length=UserProfile.USERNAME_MAX_LEN,
-        validators=(
-            validate_only_letters_numbers_underscores,
-        ),
-    )
-
     first_name = forms.CharField(
         max_length=UserProfile.FIRST_NAME_MAX_LEN,
-        validators=(
-            MinValueValidator(UserProfile.FIRST_NAME_MIN_LEN),
-            validate_only_letters,
-        ),
     )
-
     last_name = forms.CharField(
         max_length=UserProfile.LAST_NAME_MAX_LEN,
-        validators=(
-            MinValueValidator(UserProfile.LAST_NAME_MIN_LEN),
-            validate_only_letters,
-        ),
     )
-
     profile_image = forms.ImageField()
-
     date_of_birth = forms.DateField()
+    email = forms.EmailField()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -44,44 +27,31 @@ class CreateProfileForm(BootstrapFormMixin, auth_forms.UserCreationForm):
     def save(self, commit=True):
         user = super().save(commit=commit)
 
-        user_profile = UserProfile(
-            username=self.cleaned_data['username'],
+        profile = UserProfile(
             first_name=self.cleaned_data['first_name'],
             last_name=self.cleaned_data['last_name'],
             profile_image=self.cleaned_data['profile_image'],
             date_of_birth=self.cleaned_data['date_of_birth'],
+            email=self.cleaned_data['email'],
             user=user,
         )
 
         if commit:
-            user_profile.save()
+            profile.save()
         return user
 
     class Meta:
-        model = UserModel
-        fields = (
-            'username',
-            'password1',
-            'password2',
-            'first_name',
-            'last_name',
-            'profile_image',
-            'date_of_birth'
-        )
+        model = get_user_model()
+        fields = ('username', 'password1', 'password2', 'first_name', 'last_name', 'profile_image', 'date_of_birth', 'email',)
         widgets = {
-            'username': forms.Textarea(
+            'first_name': forms.TextInput(
                 attrs={
-                    'placeholder': 'Create Username'
+                    'placeholder': 'Enter first name',
                 }
             ),
-            'first_name': forms.Textarea(
+            'last_name': forms.TextInput(
                 attrs={
-                    'placeholder': 'Enter First Name'
-                }
-            ),
-            'last_name': forms.Textarea(
-                attrs={
-                    'placeholder': 'Enter First Name'
+                    'placeholder': 'Enter last name',
                 }
             ),
         }

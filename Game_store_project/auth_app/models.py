@@ -74,6 +74,8 @@ class UserProfile(models.Model):
         blank=True,
     )
 
+    email = models.EmailField()
+
     user = models.OneToOneField(
         GameStoreUser,
         on_delete=models.CASCADE,
