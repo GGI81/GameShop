@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Shop</title>
+    <link rel="icon" href="/static/images/head_icon.ico">
+    <link rel="stylesheet" href="/static/css/registration.css">
+</head>
+<body>
+<form action="{% url 'user registration' %}" method="post" enctype="multipart/form-data">
+    {{ form }}
+    {% csrf_token %}
+    <button>Save</button>
+</form>
+</body>
+</html>
