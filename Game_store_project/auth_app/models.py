@@ -1,6 +1,6 @@
-from django.core.validators import MinValueValidator
 from django.db import models
 # from django.contrib.auth import get_user_model
+from django.core.validators import MinLengthValidator
 from django.contrib.auth import models as auth_models
 from Game_store_project.auth_app.manager import AppUserManager
 from Game_store_project.auth_app.validtors import validate_only_letters_numbers_underscores, validate_only_letters
@@ -20,7 +20,7 @@ class GameStoreUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
         unique=True,
         validators=(
             validate_only_letters_numbers_underscores,
-        )
+        ),
     )
 
     # date_joined = models.DateTimeField(
@@ -51,7 +51,7 @@ class UserProfile(models.Model):
         null=False,
         blank=False,
         validators=(
-            MinValueValidator(FIRST_NAME_MIN_LEN),
+            MinLengthValidator(FIRST_NAME_MIN_LEN),
             validate_only_letters,
         ),
     )
@@ -62,12 +62,10 @@ class UserProfile(models.Model):
         null=False,
         blank=False,
         validators=(
-            MinValueValidator(LAST_NAME_MIN_LEN),
+            MinLengthValidator(LAST_NAME_MIN_LEN),
             validate_only_letters,
         ),
     )
-
-    profile_image = models.ImageField()
 
     date_of_birth = models.DateField(
         null=True,

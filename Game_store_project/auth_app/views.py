@@ -11,7 +11,6 @@ class UserRegisterView(views.CreateView):
     success_url = reverse_lazy('details')
 
 
-
 class UserLoginView(auth_views.LoginView):
     pass
 

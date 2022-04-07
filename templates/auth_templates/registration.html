@@ -7,10 +7,18 @@
     <link rel="stylesheet" href="/static/css/registration.css">
 </head>
 <body>
-<form action="{% url 'user registration' %}" method="post" enctype="multipart/form-data">
-    {{ form }}
-    {% csrf_token %}
-    <button>Save</button>
-</form>
+<h1>
+    Create account
+</h1>
+<section id="registerPage">
+    <form action="{% url 'user registration' %}" method="post" enctype="multipart/form-data" id="registration form">
+        <fieldset>
+            <legend>Registration</legend>
+                {{ form }}
+            {% csrf_token %}
+            <button>Save</button>
+        </fieldset>
+    </form>
+</section>
 </body>
 </html>

@@ -1,0 +1,56 @@
+* {
+    text-align: center;
+}
+
+body {
+    background-color: rgba(10, 80, 140, 0.68);
+}
+
+fieldset {
+    background-color: #71984c;
+    width: 500px;
+    margin-left: 680px;
+    /*margin-right: 700px;*/
+}
+
+legend {
+    background-color: gray;
+    color: white;
+    padding: 5px 10px;
+}
+
+#registerPage {
+    font-family: "Lato", serif;
+    font-size: 20px;
+    color: #e1dada;
+    padding: 1em 0 10em;
+}
+
+input, input + label > i, textarea, select {
+    border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid #000000;
+    background: #ffffff;
+    display: block;
+    width: 97%;
+    color: #000000;
+    transition: all 0.3s ease;
+    margin: 6px;
+    padding: 4px;
+    align-content: center;
+}
+
+h1 {
+    margin-left: 10px;
+}
+
+button {
+    background-color: #008CBA; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
