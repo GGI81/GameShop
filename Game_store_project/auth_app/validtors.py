@@ -7,7 +7,7 @@ VALIDATION_ERROR_MESSAGE2 = "Ensure this value contains only letters!"
 
 
 def validate_only_letters_numbers_underscores(value):
-    if not re.match(r'^[A-Za-z0-9_]+$', value):
+    if not re.match(r'^[A-Za-z0-9_@]+$', value):
         raise ValidationError(VALIDATION_ERROR_MESSAGE1)
     return value
 

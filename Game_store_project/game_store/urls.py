@@ -1,8 +1,9 @@
 from django.urls import path
 
-from Game_store_project.game_store.views import IndexView, DetailsView
+from Game_store_project.game_store.views import IndexView, DashboardView, GameDetails
 
 urlpatterns = (
     path('', IndexView.as_view(), name='index'),
-    path('details/', DetailsView.as_view(), name='details')
+    path('dashboard/', DashboardView.as_view(), name='dashboard'),
+    path('game/details/', GameDetails.as_view(), name='game details'),
 )

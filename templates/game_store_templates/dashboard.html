@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Shop</title>
+    <link rel="icon" href="/static/images/head_icon.ico">
+    <link rel="stylesheet" href="/static/css/dashboard_page.css">
+</head>
+<body>
+<nav>
+    <p>Game Shop</p>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Profile</a>
+            <ul>
+                <li><a href="{% url 'details' request.user.id %}">Details</a></li>
+                <li><a href="#">Add Funds</a></li>
+                <li><a href="{% url 'user logout' %}">Logout</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Home</a></li>
+    </ul>
+</nav>
+
+<br>
+<br>
+
+{% if games %}
+    <div id="games container">
+        {% for game in games %}
+            <div id="game">
+                <img src="{{ game.image }}" alt="Error">
+                <h3>{{ game.name }}</h3>
+                <a href="{% url 'game details' %}">See details</a>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <h1 id="no_games_h1">
+        There are no games yet!
+    </h1>
+    <img src="/static/images/no_games_photo.gif" alt="Error" id="no_games_img">
+{% endif %}
+
+</body>
+</html>
