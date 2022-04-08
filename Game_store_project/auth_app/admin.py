@@ -1,6 +1,10 @@
 from django.contrib import admin
+from Game_store_project.auth_app.models import UserProfile, GameStoreUser
 
-from Game_store_project.auth_app.models import UserProfile
+
+@admin.register(GameStoreUser)
+class GameStoreUserAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(UserProfile)

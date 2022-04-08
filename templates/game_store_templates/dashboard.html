@@ -11,7 +11,7 @@
     <p>Game Shop</p>
     <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#">Profile</a>
+        <li><a>Profile</a>
             <ul>
                 <li><a href="{% url 'details' request.user.id %}">Details</a></li>
                 <li><a href="#">Add Funds</a></li>
@@ -20,6 +20,7 @@
         </li>
         <li><a href="#">Home</a></li>
         <li><a href="#">Home</a></li>
+        <li><a href="{% url 'add game' %}">Add Game</a></li>
     </ul>
 </nav>
 
@@ -42,6 +43,5 @@
     </h1>
     <img src="/static/images/no_games_photo.gif" alt="Error" id="no_games_img">
 {% endif %}
-
 </body>
 </html>
