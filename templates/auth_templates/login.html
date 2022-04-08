@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Game Shop</title>
+    <link rel="icon" href="/static/images/head_icon.ico">
+    <link rel="stylesheet" href="/static/css/login_page.css">
 </head>
 <body>
+<nav>
+    <p>Game Shop</p>
+</nav>
+<h1>
+    Login to your account
+</h1>
+<br>
+<br>
+<section id="LoginPage">
+    <form action="{% url 'user login' %}" method="post">
+        <fieldset>
+            <legend>Login</legend>
 
+            {{ form }}
+            {% csrf_token %}
+            <button>Login</button>
+        </fieldset>
+    </form>
+</section>
 </body>
 </html>

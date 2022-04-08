@@ -74,6 +74,12 @@ class UserProfile(models.Model):
 
     email = models.EmailField()
 
+    image = models.ImageField(
+        null=True,
+        blank=True,
+        default='no_profile.jpg',
+    )
+
     user = models.OneToOneField(
         GameStoreUser,
         on_delete=models.CASCADE,

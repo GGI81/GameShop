@@ -1,8 +1,6 @@
 from django import forms
-# from django.core.validators import MinValueValidator
 from django.core.validators import MinLengthValidator
-from django.utils.safestring import mark_safe
-
+# from django.core.validators import MinValueValidator
 from Game_store_project.auth_app.models import UserProfile
 from django.contrib.auth import forms as auth_forms, get_user_model
 from Game_store_project.auth_app.validtors import validate_only_letters
@@ -34,8 +32,6 @@ class CreateProfileForm(BootstrapFormMixin, auth_forms.UserCreationForm):
     email = forms.EmailField()
 
 
-
-
     def save(self, commit=True):
         user = super().save(commit=commit)
 
@@ -53,7 +49,7 @@ class CreateProfileForm(BootstrapFormMixin, auth_forms.UserCreationForm):
 
     class Meta:
         model = get_user_model()
-        fields = ('username', 'password1', 'password2', 'first_name', 'last_name', 'date_of_birth', 'email',)
+        fields = ('username', 'password1', 'password2', 'first_name', 'last_name', 'date_of_birth', 'email')
         widgets = {
             'first_name': forms.TextInput(
                 attrs={
