@@ -34,7 +34,3 @@ class UserLogoutView(auth_views.LogoutView):
 class ProfileDetailsView(views.DetailView, auth_mixins.LoginRequiredMixin):
     model = UserProfile
     template_name = 'auth_templates/profile_details.html'
-    # context_object_name = 'profile'
-
-    def get_context_data(self, **kwargs):
-        pass

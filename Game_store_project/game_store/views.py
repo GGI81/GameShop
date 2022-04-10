@@ -1,11 +1,18 @@
-from django.urls import reverse_lazy
+# from django.urls import reverse_lazy
+from django.shortcuts import redirect, render
 from django.views import generic as views
 from Game_store_project.game_store.models import Games
-from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin # PermissionRequiredMixin
 
 
-class IndexView(views.TemplateView):
-    template_name = 'game_store_templates/index.html'
+class IndexView(views.View):
+    @staticmethod
+    def get(request):
+        if request.user.is_authenticated:
+            return redirect('dashboard')
+        else:
+            return render(request, 'game_store_templates/index.html')
+
 
 
 class DashboardView(views.ListView, LoginRequiredMixin):
@@ -22,10 +29,12 @@ class DashboardView(views.ListView, LoginRequiredMixin):
 class GameDetails(views.DetailView):
     model = Games
 
+#
+# class AddNewGame(views.CreateView, PermissionRequiredMixin, LoginRequiredMixin):
+#     permission_required = 'game_store.change_games'
+#     model = Games
+#     success_url = reverse_lazy('dashboard')
+#     template_name = 'game_store_templates/add_game.html'
+#     fields = '__all__'
 
-class AddNewGame(views.CreateView, PermissionRequiredMixin, LoginRequiredMixin):
-    permission_required = 'game_store.change_games'
-    model = Games
-    success_url = reverse_lazy('dashboard')
-    template_name = 'game_store_templates/add_game.html'
-    fields = '__all__'
+

@@ -4,23 +4,43 @@
     <meta charset="UTF-8">
     <title>Game Shop</title>
     <link rel="icon" href="/static/images/head_icon.ico">
-    <link rel="stylesheet" href="/static/css/profile_details.css">
+    <link rel="stylesheet" href="/static/css/profile_detailss.css">
 </head>
 <body>
 <nav>
     <p>Game Shop</p>
-{#    <ul>#}
-{#        <li><a href="#">Home</a></li>#}
-{#        <li><a href="#">Home</a>#}
-{#            <ul>#}
-{#                <li><a href="#">ASD</a></li>#}
-{#                <li><a href="#">QWE</a></li>#}
-{#                <li><a href="#">ZXC</a></li>#}
-{#            </ul>#}
-{#        </li>#}
-{#        <li><a href="#">Home</a></li>#}
-{#        <li><a href="#">Home</a></li>#}
-{#    </ul>#}
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a>Profile</a>
+            <ul>
+                <li><a href="{% url 'details' request.user.id %}">Details</a></li>
+                <li><a href="#">Add Funds</a></li>
+                <li><a href="{% url 'user logout' %}">Logout</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Home</a></li>
+    </ul>
 </nav>
+<div>
+    {% if object.image %}
+        <img src="{{ object.image }}" alt="Error">
+    {% else %}
+        <img src="/static/images/no_profile.jpg" alt="Error">
+    {% endif %}
+    <h3>Username: {{ request.user.username }}</h3>
+    <h3>Name: {{ object.get_full_name }}</h3>
+    {% if object.date_of_birth %}
+        <h3>Date of birth: {{ object.date_of_birth }}</h3>
+    {% else %}
+        <h3>Date of birth: No info</h3>
+    {% endif %}
+    <h3>Wallet: {{ object.wallet }}$</h3>
+    <br>
+    <a href="#" id="edit">Edit</a>
+    <a href="#" id="delete">Delete</a>
+</div>
+
+
 </body>
 </html>

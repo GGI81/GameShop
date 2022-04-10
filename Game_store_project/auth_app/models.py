@@ -77,7 +77,12 @@ class UserProfile(models.Model):
     image = models.ImageField(
         null=True,
         blank=True,
-        default='no_profile.jpg',
+        # upload_to='profile_pic',
+        # default='no_profile.jpg',
+    )
+
+    wallet = models.FloatField(
+        default=0,
     )
 
     user = models.OneToOneField(
@@ -85,3 +90,8 @@ class UserProfile(models.Model):
         on_delete=models.CASCADE,
         primary_key=True,
     )
+
+    @property
+    def get_full_name(self):
+        return f"{self.first_name} {self.last_name}"
+
