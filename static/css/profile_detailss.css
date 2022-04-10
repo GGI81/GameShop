@@ -88,6 +88,11 @@ div a {
     text-align: center;
 }
 
+div a:hover {
+    box-shadow: 5px 5px 20px #000000;
+    transition: box-shadow 0.7s;
+}
+
 #edit {
     background-color: #4CAF50; /* Green */
     border: none;
@@ -108,4 +113,5 @@ div a {
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
+    margin-left: 40px;
 }

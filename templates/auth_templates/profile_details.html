@@ -37,8 +37,8 @@
     {% endif %}
     <h3>Wallet: {{ object.wallet }}$</h3>
     <br>
-    <a href="#" id="edit">Edit</a>
-    <a href="#" id="delete">Delete</a>
+    <a href="{% url 'edit profile' request.user.id %}" id="edit">Edit</a>
+    <a href="{% url 'delete profile' request.user.id %}" id="delete">Delete</a>
 </div>
 
 

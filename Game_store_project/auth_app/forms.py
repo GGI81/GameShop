@@ -11,6 +11,13 @@ UserModel = get_user_model()
 
 
 class CreateProfileForm(BootstrapFormMixin, auth_forms.UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._init_bootstrap_form_controls()
+        super(CreateProfileForm, self).__init__(*args, **kwargs)
+        self.fields['password1'].help_text = None
+        self.fields['password2'].help_text = None
+
     first_name = forms.CharField(
         max_length=UserProfile.FIRST_NAME_MAX_LEN,
         validators=(
@@ -63,10 +70,17 @@ class CreateProfileForm(BootstrapFormMixin, auth_forms.UserCreationForm):
             ),
         }
 
-
+class EditProfileForm(BootstrapFormMixin, forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._init_bootstrap_form_controls()
-        super(CreateProfileForm, self).__init__(*args, **kwargs)
-        self.fields['password1'].help_text = None
-        self.fields['password2'].help_text = None
+
+    class Meta:
+        model = UserProfile
+        fields = ['first_name', 'last_name', 'date_of_birth', 'email', 'image']
+
+
+class DeleteProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ()

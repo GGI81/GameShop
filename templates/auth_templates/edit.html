@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Shop</title>
+    <link rel="icon" href="/static/images/head_icon.ico">
+    <link rel="stylesheet" href="/static/css/edit_profile.css">
+</head>
+<body>
+<section id="edit_profile">
+    <form action="{% url 'edit profile' request.user.id %}" method="post" enctype="multipart/form-data" id="registration form">
+        <fieldset>
+            <legend>Edit Profile</legend>
+                {{ form }}
+            {% csrf_token %}
+            <br>
+            <button>Save</button>
+        </fieldset>
+    </form>
+</section>
+</body>
+</html>
