@@ -134,7 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'auth_app.GameStoreUser'
 
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]  # Adding static files to our Project

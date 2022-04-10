@@ -8,7 +8,7 @@
 </head>
 <body>
 <section id="edit_profile">
-    <form action="{% url 'edit profile' request.user.id %}" method="post" enctype="multipart/form-data" id="registration form">
+    <form action="{% url 'edit profile' request.user.id %}" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend>Edit Profile</legend>
                 {{ form }}

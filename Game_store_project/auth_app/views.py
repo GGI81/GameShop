@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import mixins as auth_mixins
 from Game_store_project.auth_app.models import UserProfile
 from django.contrib.auth import views as auth_views, login
-from Game_store_project.auth_app.forms import CreateProfileForm, EditProfileForm, DeleteProfileForm
+from Game_store_project.auth_app.forms import CreateProfileForm, EditProfileForm
 
 
 # from Game_store_project.auth_app.common.custom_mixins import RedirectToDashboardMixin
@@ -44,24 +44,14 @@ class ProfileDetailsView(views.DetailView, auth_mixins.LoginRequiredMixin):
 #     pass
 
 
-# FBV
-def edit_profile_view(request, pk):
-    profile = UserProfile.objects.get(pk=pk)
-    if request.method == "POST":
-        form = EditProfileForm(request.POST, instance=profile)
-        if form.is_valid():
-            form.save()
-            return redirect('dashboard')
-    else:
-        form = EditProfileForm(instance=profile)
+# Todo => have to correct code to be able to upload images after editing profile
+class EditProfileView(views.UpdateView):
+    model = UserProfile
+    template_name = 'auth_templates/edit.html'
+    form_class = EditProfileForm
 
-    context = {
-        'profile': profile,
-        'form': form,
-    }
-
-    return render(request, 'auth_templates/edit.html', context)
-
+    def get_success_url(self):
+        return reverse_lazy('details', kwargs={'pk': self.object.pk})
 
 
 class ConfirmationForDeletingProfileView(views.DeleteView):
