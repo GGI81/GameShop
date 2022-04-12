@@ -47,7 +47,7 @@ input, input + label > i, textarea, select {
 fieldset {
     background-color: #71984c;
     width: 400px;
-    margin-left: 760px;
+    margin-left: 860px;
     height: 250px;
     /*margin-right: 700px;*/
 }

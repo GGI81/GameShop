@@ -4,13 +4,12 @@
 
 body {
     background-color: rgba(10, 80, 140, 0.68);
-    /*background-image: url("/static/images/index_background.jpg");*/
 }
 
 fieldset {
     background-color: #71984c;
     width: 500px;
-    margin-left: 680px;
+    margin-left: 800px;
     /*margin-right: 700px;*/
 }
 
@@ -20,7 +19,7 @@ legend {
     padding: 5px 10px;
 }
 
-#edit_profile {
+#registerPage {
     font-family: "Lato", serif;
     font-size: 20px;
     color: #e1dada;

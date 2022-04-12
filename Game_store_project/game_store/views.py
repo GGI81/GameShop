@@ -1,8 +1,9 @@
-# from django.urls import reverse_lazy
-from django.shortcuts import redirect, render
 from django.views import generic as views
+from django.shortcuts import redirect, render
+from django.contrib.auth import mixins as auth_mixins
 from Game_store_project.game_store.models import Games
-from django.contrib.auth.mixins import LoginRequiredMixin # PermissionRequiredMixin
+
+
 
 
 class IndexView(views.View):
@@ -15,26 +16,13 @@ class IndexView(views.View):
 
 
 
-class DashboardView(views.ListView, LoginRequiredMixin):
+class DashboardView(views.ListView, auth_mixins.LoginRequiredMixin):
     model = Games
     template_name = 'game_store_templates/dashboard.html'
     context_object_name = 'games'
 
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     # context = super().get_context_data(**kwargs)
-    #     # context['details'] = DetailView
-    #     pass
 
+# TODO have to make permissions and the admin will be able to add edit and delete games
 
-class GameDetails(views.DetailView):
-    model = Games
-
-#
-# class AddNewGame(views.CreateView, PermissionRequiredMixin, LoginRequiredMixin):
-#     permission_required = 'game_store.change_games'
-#     model = Games
-#     success_url = reverse_lazy('dashboard')
-#     template_name = 'game_store_templates/add_game.html'
-#     fields = '__all__'
 
 

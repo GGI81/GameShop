@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <title>Game Shop</title>
     <link rel="icon" href="/static/images/head_icon.ico">
-    <link rel="stylesheet" href="/static/css/profile_detailss.css">
+    <link rel="stylesheet" href="/static/css/accounts/profile_details.css">
 </head>
 <body>
 <nav>
     <p>Game Shop</p>
     <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
         <li><a>Profile</a>
             <ul>
                 <li><a href="{% url 'details' request.user.id %}">Details</a></li>
-                <li><a href="#">Add Funds</a></li>
+                <li><a href="{% url 'add funds' request.user.id %}">Add Funds</a></li>
                 <li><a href="{% url 'user logout' %}">Logout</a></li>
             </ul>
         </li>
@@ -38,7 +38,6 @@
     <h3>Wallet: {{ object.wallet }}$</h3>
     <br>
     <a href="{% url 'edit profile' request.user.id %}" id="edit">Edit</a>
-    <a href="{% url 'delete profile' request.user.id %}" id="delete">Delete</a>
 </div>
 
 

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <title>Game Shop</title>
     <link rel="icon" href="/static/images/head_icon.ico">
-    <link rel="stylesheet" href="/static/css/store/dashboard.css">
+    <link rel="stylesheet" href="/static/css/accounts/add_funds.css">
+    <link rel="stylesheet" href="">
 </head>
 <body>
 <nav>
@@ -20,28 +21,28 @@
         </li>
         <li><a href="#">Home</a></li>
         <li><a href="#">Home</a></li>
-{#        <li><a href="{% url 'add game' %}">Add Game</a></li>#}
     </ul>
 </nav>
-
-<br>
-<br>
-
-{% if games %}
-    <div id="games container">
-        {% for game in games %}
-            <div id="game">
-                <img src="{{ game.image }}" alt="Error">
-                <h3>{{ game.name }}</h3>
-                <a href="{% url 'game details' %}">See details</a>
-            </div>
-        {% endfor %}
+<h1>Add Funds</h1>
+<form action="{% url 'add funds' request.user.id %}" method="get">
+    <br>
+    <br>
+    <div>
+        <h3>Add 5$ to your wallet</h3>
+        <input type="submit" value="Add 5$" name="Five"/>
     </div>
-{% else %}
-    <h1 id="no_games_h1">
-        There are no games yet!
-    </h1>
-    <img src="/static/images/no_games_photo.gif" alt="Error" id="no_games_img">
-{% endif %}
+    <div>
+        <h3>Add 10$ to your wallet</h3>
+        <input type="submit" value="Add 10$" name="Ten"/>
+    </div>
+    <div>
+        <h3>Add 20$ to your wallet</h3>
+        <input type="submit" value="Add 20$" name="Twelve"/>
+    </div>
+    <div>
+        <h3>Add 50$ to your wallet</h3>
+        <input type="submit" value="Add 50$" name="Fifty"/>
+    </div>
+</form>
 </body>
 </html>
