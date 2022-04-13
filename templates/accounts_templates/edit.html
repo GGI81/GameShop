@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <title>Game Shop</title>
     <link rel="icon" href="/static/images/head_icon.ico">
-    <link rel="stylesheet" href="/static/css/accounts/editt_profile.css">
+    <link rel="stylesheet" href="/static/css/accounts/edit_profile.css">
 </head>
 <body>
 <section id="edit_profile">
     <form action="{% url 'edit profile' request.user.id %}" method="post" enctype="multipart/form-data">
         <fieldset>
             <legend>Edit Profile</legend>
-                {{ form }}
+            {{ form }}
             {% csrf_token %}
             <br>
+            <a href="{% url 'details' request.user.id %}">Go back</a>
             <button>Save</button>
         </fieldset>
     </form>

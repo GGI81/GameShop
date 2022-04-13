@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Game Shop</title>
     <link rel="icon" href="/static/images/head_icon.ico">
-    <link rel="stylesheet" href="/static/css/accounts/profile_details.css">
+    <link rel="stylesheet" href="/static/css/accounts/details.css">
 </head>
 <body>
 <nav>
@@ -38,6 +38,7 @@
     <h3>Wallet: {{ object.wallet }}$</h3>
     <br>
     <a href="{% url 'edit profile' request.user.id %}" id="edit">Edit</a>
+    <a href="{% url 'change password' %}" id="change">Change Password</a>
 </div>
 
 

@@ -104,8 +104,8 @@ div a:hover {
     font-size: 18px;
 }
 
-#delete {
-    background-color: #f44336; /* Green */
+#change {
+    background-color: #545252; /* Gray */
     border: none;
     color: white;
     padding: 15px 32px;

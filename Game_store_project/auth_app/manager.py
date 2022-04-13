@@ -1,9 +1,9 @@
 from django.contrib.auth import base_user
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
 
 
-User
+# User
 
 
 # # Only by email and password
