@@ -101,3 +101,8 @@ h3{
     margin-top: 20px;
     margin-left: 300px;
 }
+
+div input:hover, input:active {
+    box-shadow: 5px 5px 20px #000000;
+    transition: box-shadow 0.5s;
+}

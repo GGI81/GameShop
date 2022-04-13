@@ -23,6 +23,8 @@ class GameStoreUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
         ),
     )
 
+    email = models.EmailField()
+
     # date_joined = models.DateTimeField(
     #     auto_now_add=True,
     # )
@@ -71,8 +73,6 @@ class UserProfile(models.Model):
         null=True,
         blank=True,
     )
-
-    email = models.EmailField()
 
     image = models.ImageField(
         null=True,

@@ -3,25 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Game Shop</title>
-    <link rel="stylesheet" href="/static/css/store/index.css">
+    <link rel="stylesheet" href="/static/css/store/index_page.css">
     <link rel="icon" href="/static/images/head_icon.ico">
 </head>
 <body>
 <nav>
     <p>Game Shop</p>
-{#    <ul>#}
-{#        <li><a href="#">Home</a></li>#}
-{#        <li><a href="#">Home</a>#}
-{#            <ul>#}
-{#                <li><a href="#">ASD</a></li>#}
-{#                <li><a href="#">QWE</a></li>#}
-{#                <li><a href="#">ZXC</a></li>#}
-{#            </ul>#}
-{#        </li>#}
-{#        <li><a href="#">Home</a></li>#}
-{#        <li><a href="#">Home</a></li>#}
-{#    </ul>#}
+    <ul>
+        {% if not request.user.is_authenticated %}
+            <li><a href="{% url 'dashboard' %}">Games</a></li>
+            <li><a href="{% url 'index' %}">Login or Create account</a></li>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+            <li><a href="{% url 'dashboard' %}">Games</a></li>
+            <li><a href="{% url 'index' %}">Login or Create account</a></li>
+            <li><a href="#">My Library</a></li>
+            <li><a href="#">Contacts</a></li>
+            <li><a>Profile</a>
+                <ul>
+                    <li><a href="{% url 'details' request.user.id %}">Details</a></li>
+                    <li><a href="{% url 'add funds' request.user.id %}">Add Funds</a></li>
+                    <li><a href="{% url 'user logout' %}">Logout</a></li>
+                </ul>
+            </li>
+            </ul>
+        {% endif %}
 </nav>
+
 <br>
 <br>
 <br>
@@ -33,7 +41,7 @@
     <h1 id="title_index">Game Shop</h1>
     <p>Buy and play your favourite games</p>
     <br>
-    <a href="{% url 'user registration' %}">Registration</a>
+    <a href="{% url 'user registration' %}">Create account</a>
     <a href="{% url 'user login' %}">Login</a>
 </div>
 </body>
