@@ -77,8 +77,6 @@ class UserProfile(models.Model):
     image = models.ImageField(
         null=True,
         blank=True,
-        # upload_to='profile_pic',
-        # default='no_profile.jpg',
     )
 
     wallet = models.FloatField(

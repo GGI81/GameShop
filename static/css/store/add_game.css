@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 body {
@@ -68,46 +69,52 @@ nav ul li ul li a:hover {
     background-color: #f3f3f3;
 }
 
-
-#title_index {
-    color: #545252;
-    margin-top: 50px;
-    margin-left: 510px;
-    font-size: 65px;
+h1 {
+    margin-top: 100px;
+    margin-right: 50px;
 }
 
-#welcome {
-    background-color: white;
-    font-size: 50px;
-    margin-left: 350px;
-    margin-right: 350px;
-    margin-top: 40px;
-    height: 450px;
-    border-radius: 6px;
+input, input + label > i, textarea, select {
+    border-radius: 3px;
+    box-shadow: none;
+    border: 1px solid #000000;
+    background: #ffffff;
+    display: block;
+    width: 94%;
+    color: #000000;
+    transition: all 0.3s ease;
+    margin: 6px;
+    padding: 4px;
+    align-content: center;
 }
 
-#welcome p {
+fieldset {
+    margin-top: 60px;
+    background-color: #71984c;
+    width: 500px;
+    margin-left: 800px;
+    height: 650px;
+}
+
+legend {
+    background-color: gray;
+    color: white;
+    padding: 5px 10px;
+}
+
+button {
+    background-color: #008CBA; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
     text-align: center;
-    color: #545252;
-    margin-right: 20px;
-    margin-top: 10px;
-}
-
-#welcome a {
-    background: linear-gradient(#a0e3e7, #937b7b);
-    color: #ffffff;
-    padding: 7px 14px;
     text-decoration: none;
-    font-size: 30px;
     display: inline-block;
-    text-transform: uppercase;
-    border-radius: 2px;
-    box-shadow: 5px 5px 20px #A09797;
-    margin-left: 400px;
-    margin-right: -230px;
+    font-size: 16px;
 }
 
-#welcome a:hover, a:active {
+button:hover {
     box-shadow: 5px 5px 20px #000000;
     transition: box-shadow 0.7s;
 }
+

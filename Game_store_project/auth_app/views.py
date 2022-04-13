@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
+from django.shortcuts import render, redirect
 from django.contrib.auth import mixins as auth_mixins
+from django.contrib.auth.decorators import login_required
 from Game_store_project.auth_app.models import UserProfile
 from django.contrib.auth import views as auth_views, login
 from Game_store_project.auth_app.forms import CreateProfileForm, EditProfileForm, ChangePasswordForm
@@ -59,6 +60,7 @@ class ChangePasswordView(auth_views.PasswordChangeView, auth_mixins.LoginRequire
 
 
 # FBV
+@login_required()
 def add_funds_view(request, pk):
     profile = UserProfile.objects.get(pk=pk)
 
@@ -85,3 +87,5 @@ def add_funds_view(request, pk):
         return redirect('dashboard')
 
     return render(request, 'accounts_templates/add_funds.html')
+
+

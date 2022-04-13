@@ -20,6 +20,9 @@
                 <li><a href="{% url 'user logout' %}">Logout</a></li>
             </ul>
         </li>
+        {% if request.user.is_staff %}
+            <li><a href="{% url 'add game' %}">Add New Game</a></li>
+        {% endif %}
     </ul>
 </nav>
 <div>
@@ -40,7 +43,5 @@
     <a href="{% url 'edit profile' request.user.id %}" id="edit">Edit</a>
     <a href="{% url 'change password' %}" id="change">Change Password</a>
 </div>
-
-
 </body>
 </html>

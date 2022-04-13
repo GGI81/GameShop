@@ -21,6 +21,9 @@
                 <li><a href="{% url 'user logout' %}">Logout</a></li>
             </ul>
         </li>
+        {% if request.user.is_staff %}
+            <li><a href="{% url 'add game' %}">Add New Game</a></li>
+        {% endif %}
     </ul>
 </nav>
 <h1>Add Funds</h1>
