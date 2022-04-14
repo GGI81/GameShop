@@ -21,7 +21,9 @@
             <li><a>Profile</a>
                 <ul>
                     <li><a href="{% url 'details' request.user.id %}">Details</a></li>
-                    <li><a href="{% url 'add funds' request.user.id %}">Add Funds</a></li>
+                    {% if not request.user.is_staff %}
+                        <li><a href="{% url 'add funds' request.user.id %}">Add Funds</a></li>
+                    {% endif %}
                     <li><a href="{% url 'user logout' %}">Logout</a></li>
                 </ul>
             </li>

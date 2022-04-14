@@ -44,6 +44,17 @@ class AddGameView(views.CreateView, auth_mixins.LoginRequiredMixin, auth_mixins.
 
 
 
+def game_details(request, pk):
+    game = Games.objects.get(pk=pk)
+
+    context = {
+        'game': game,
+    }
+
+    return render(request, 'game_store_templates/game_description.html', context)
+
+
+
 class EditGameView(views.UpdateView, auth_mixins.LoginRequiredMixin, auth_mixins.PermissionRequiredMixin):
     pass
 

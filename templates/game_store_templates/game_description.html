@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Game Shop</title>
+    <link rel="icon" href="/static/images/head_icon.ico">
+    <link rel="stylesheet" href="/static/css/store/game_description.css">
 </head>
 <body>
+<nav>
+    <p>Game Shop</p>
+</nav>
+<img src="{{ game.image.url }}" alt="Error">
+<h3>{{ game.name }}</h3>
+<hr>
+<br>
+<br>
+<p id="game_description">{{ game.description }}</p>
+<br>
 
+<a href="{% url 'dashboard' %}">Go back</a>
+<br>
+<br>
+<br>
+<br>
 </body>
 </html>

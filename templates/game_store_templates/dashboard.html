@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Game Shop</title>
     <link rel="icon" href="/static/images/head_icon.ico">
-    <link rel="stylesheet" href="/static/css/store/dashboard.css">
+    <link rel="stylesheet" href="/static/css/store/dashboard_games.css">
 </head>
 <body>
 <nav>
@@ -18,16 +18,18 @@
             <li><a href="{% url 'dashboard' %}">Shop</a></li>
             <li><a href="#">My Library</a></li>
             <li><a href="#">Contacts</a></li>
-            <li><a>Profile</a>
-                <ul>
-                    <li><a href="{% url 'details' request.user.id %}">Details</a></li>
-                    <li><a href="{% url 'add funds' request.user.id %}">Add Funds</a></li>
-                    <li><a href="{% url 'user logout' %}">Logout</a></li>
-                </ul>
-            </li>
             {% if request.user.is_staff %}
                 <li><a href="{% url 'add game' %}">Add New Game</a></li>
             {% endif %}
+            <li><a>Profile</a>
+                <ul>
+                    <li><a href="{% url 'details' request.user.id %}">Details</a></li>
+                    {% if not request.user.is_staff %}
+                        <li><a href="{% url 'add funds' request.user.id %}">Add Funds</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'user logout' %}">Logout</a></li>
+                </ul>
+            </li>
             </ul>
         {% endif %}
 </nav>
@@ -36,12 +38,28 @@
 <br>
 
 {% if games %}
-    <div id="games container">
+    <h1>These are the games available now</h1>
+    <hr>
+    <br>
+    <br>
+    <div id="games_container">
         {% for game in games %}
-            <div id="game">
-                <img src="{{ game.image }}" alt="Error">
-                <h3>{{ game.name }}</h3>
-                <a href="#">See details</a>
+            <div class="game">
+                <img src="{{ game.image.url }}" alt="Error">
+                <h3>Name: {{ game.name }}</h3>
+                <h4>Price: {{ game.price }}$</h4>
+                {% if request.user.is_authenticated and not request.user.is_staff %}
+                    <a href="{% url 'game details' game.pk %}" id="see_game_details">See details</a>
+                    <a href="#" id="buy_current_game">Buy game</a>
+                {% endif %}
+                {% if request.user.is_staff %}
+                    <a href="#" id="editing_as_admin">Edit Game</a>
+                    <a href="#" id="deleting_as_admin">Delete Game</a>
+                {% endif %}
+                <br>
+                <br>
+                <br>
+                <br>
             </div>
         {% endfor %}
     </div>

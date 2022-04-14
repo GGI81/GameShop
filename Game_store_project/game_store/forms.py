@@ -45,3 +45,4 @@ class CreatingGameForm(BootstrapFormMixin, forms.ModelForm):
     class Meta:
         model = Games
         fields = '__all__'
+
