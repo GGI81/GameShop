@@ -72,9 +72,6 @@ class UserProfile(models.Model):
 
     first_name = models.CharField(
         max_length=FIRST_NAME_MAX_LEN,
-        unique=False,
-        null=False,
-        blank=False,
         validators=(
             MinLengthValidator(FIRST_NAME_MIN_LEN),
             validate_only_letters,
