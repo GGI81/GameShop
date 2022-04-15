@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 body {
@@ -183,4 +184,28 @@ hr {
 #buy_current_game:hover {
     box-shadow: 5px 5px 20px #000000;
     transition: box-shadow 0.10ms;
+}
+
+#go_to_the_shop {
+    margin-top: 10px;
+    background-color: rgb(169, 169, 169);
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+#go_to_the_shop:hover {
+    box-shadow: 5px 5px 20px #000000;
+    transition: box-shadow 0.10ms;
+}
+
+#no_games_owned_by_user{
+   border-radius: 5px;
+    border-style: solid;
+    border-color: black;
 }
