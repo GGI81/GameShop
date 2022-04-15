@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Game Shop</title>
     <link rel="icon" href="/static/images/head_icon.ico">
-    <link rel="stylesheet" href="/static/css/store/dashboard_games.css">
+    <link rel="stylesheet" href="/static/css/store/library.css">
 </head>
 <body>
 <nav>
@@ -36,16 +36,14 @@
         {% endif %}
 </nav>
 
+<h1 id="library">Library</h1>
+<hr>
 <br>
 <br>
-
+<br>
 {% if games %}
-    <h1>These are the games available now</h1>
-    <hr>
-    <br>
-    <br>
     <div id="games_container">
-        {% for game in games %}
+        {% for game in profile.games.all %}
             <div class="game">
                 {% if game.image %}
                     <img src="{{ game.image.url }}" alt="Error">
@@ -54,14 +52,8 @@
                 {% endif %}
 
                 <h3>Name: {{ game.name }}</h3>
-                <h4>Price: {{ game.price }}$</h4>
                 {% if request.user.is_authenticated and not request.user.is_staff %}
                     <a href="{% url 'game details' game.pk %}" id="see_game_details">See details</a>
-                    <a href="{% url 'buy game' game.pk %}" id="buy_current_game">Buy game</a>
-                {% endif %}
-                {% if request.user.is_staff %}
-                    <a href="{% url 'edit game' game.pk %}" id="editing_as_admin">Edit Game</a>
-                    <a href="{% url 'delete game' game.pk %}" id="deleting_as_admin">Delete Game</a>
                 {% endif %}
                 <br>
                 <br>
@@ -71,10 +63,15 @@
         {% endfor %}
     </div>
 {% else %}
-    <h1 id="no_games_h1">
-        There are no games yet!
-    </h1>
-    <img src="/static/images/no_games_photo.gif" alt="Error" id="no_games_img">
+    <h3>No games!</h3>
+    <br>
+    <br>
+    <br>
+    <img src="/static/images/no_owned_games.jpg" alt="Error">
+    <br>
+    <br>
+    <br>
+    <a href="{% url 'dashboard' %}" id="go_to_the_shop">Go and buy some</a>
 {% endif %}
 </body>
 </html>

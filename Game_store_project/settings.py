@@ -145,7 +145,7 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 
 LOGIN_URL = reverse_lazy('index')
-LOGOUT_REDIRECT_URL = reverse_lazy('dashboard')
+LOGOUT_REDIRECT_URL = reverse_lazy('index')
 
 
 

@@ -1,7 +1,7 @@
 from django.db import models
-# from django.contrib.auth import get_user_model
 from django.core.validators import MinLengthValidator
 from django.contrib.auth import models as auth_models
+from Game_store_project.game_store.models import Games
 from Game_store_project.auth_app.manager import AppUserManager
 from Game_store_project.auth_app.validtors import validate_only_letters_numbers_underscores, validate_only_letters
 
@@ -81,6 +81,10 @@ class UserProfile(models.Model):
 
     wallet = models.FloatField(
         default=0,
+    )
+
+    games = models.ManyToManyField(
+        Games,
     )
 
     user = models.OneToOneField(

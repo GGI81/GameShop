@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgba(10, 80, 140, 0.68);
+    /*background-image: url("/static/images/index_background.jpg");*/
+}
+
+nav {
+    width: 100%;
+    height: 80px;
+    background-color: white;
+}
+
+nav p {
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    color: #222;
+    font-size: 24px;
+    line-height: 55px;
+    float: left;
+    padding: 10px 20px;
+    margin-right: 30px;
+}
+
+nav ul {
+    float: left;
+}
+
+nav ul li {
+    float: left;
+    list-style: none;
+    position: relative;
+}
+
+nav ul li a {
+    display: block;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    color: #222;
+    font-size: 16px;
+    padding: 28px 14px;
+    text-decoration: none;
+}
+
+nav ul li ul {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    border-radius: 0px 0px 4px 4px;
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul li ul li {
+    width: 80px; /*This is how with the menu to be*/
+    border-radius: 4px;
+}
+
+nav ul li ul li a {
+    padding: 8px 14px;
+}
+
+nav ul li ul li a:hover {
+    background-color: #f3f3f3;
+}
+
+#library {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 70px;
+    margin-bottom: 10px;
+}
+
+#games_container {
+    margin-left: 100px;
+    /*margin-right: 100px;*/
+    margin-bottom: 100px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+hr {
+    margin-right: 300px;
+    margin-left: 300px;
+}
+
+.game {
+    display: inline-block;
+    margin-left: 170px;
+
+}
+
+.game img {
+    height: 500px;
+    width: 400px;
+    border-style: solid;
+    border-radius: 5px;
+    border-color: black;
+}
+
+.game h3 {
+    color: #000000;
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+}
+
+.game h4 {
+    color: #000000;
+    font-size: 22px;
+}
+
+#editing_as_admin {
+    margin-top: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+
+#editing_as_admin:hover {
+    box-shadow: 5px 5px 20px #000000;
+    transition: box-shadow 0.10ms;
+}
+
+#deleting_as_admin {
+    margin-top: 10px;
+    background-color: rgba(241, 0, 0, 0.68);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+
+#deleting_as_admin:hover {
+    box-shadow: 5px 5px 20px #000000;
+    transition: box-shadow 0.10ms;
+}
+
+#see_game_details {
+    margin-top: 10px;
+    background-color: rgb(169, 169, 169);
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin-right: 20px;
+}
+
+#see_game_details:hover {
+    box-shadow: 5px 5px 20px #000000;
+    transition: box-shadow 0.10ms;
+}
+
+h3 {
+    text-align: center;
+    font-size: 30px;
+}
+
+img {
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    margin-left: 950px;
+}
+
+#go_to_the_shop {
+    background-color: rgb(54, 171, 41);
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin-left: 970px;
+}
+
+#go_to_the_shop:hover {
+    box-shadow: 5px 5px 20px #000000;
+    transition: box-shadow 0.10ms;
+}

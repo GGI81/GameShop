@@ -1,6 +1,5 @@
 from django.db import models
 from django.core.validators import MinValueValidator
-from Game_store_project.auth_app.models import UserProfile
 
 
 class Games(models.Model):
@@ -31,14 +30,3 @@ class Games(models.Model):
         ),
     )
 
-
-class OwnedGames(models.Model):
-    profile = models.ForeignKey(
-        UserProfile,
-        on_delete=models.CASCADE,
-    )
-
-    game = models.ForeignKey(
-        Games,
-        on_delete=models.CASCADE,
-    )
