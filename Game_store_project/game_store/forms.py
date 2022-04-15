@@ -46,3 +46,27 @@ class CreatingGameForm(BootstrapFormMixin, forms.ModelForm):
         model = Games
         fields = '__all__'
 
+
+
+class EditGameForm(BootstrapFormMixin, forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._init_bootstrap_form_controls()
+
+    class Meta:
+        model = Games
+        fields = '__all__'
+
+
+class DeleteGameForm(BootstrapFormMixin, forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._init_bootstrap_form_controls()
+
+    def save(self, commit=True):
+        self.instance.delete()
+        return self.instance
+
+    class Meta:
+        model = Games
+        fields = ()

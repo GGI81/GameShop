@@ -3,7 +3,7 @@ from django.views import generic as views
 from django.shortcuts import redirect, render
 from django.contrib.auth import mixins as auth_mixins
 from Game_store_project.game_store.models import Games
-from Game_store_project.game_store.forms import CreatingGameForm
+from Game_store_project.game_store.forms import CreatingGameForm, EditGameForm, DeleteGameForm
 
 
 class IndexView(views.View):
@@ -43,8 +43,7 @@ class AddGameView(views.CreateView, auth_mixins.LoginRequiredMixin, auth_mixins.
             return redirect('no permissions')
 
 
-
-def game_details(request, pk):
+def game_details_view(request, pk):
     game = Games.objects.get(pk=pk)
 
     context = {
@@ -54,10 +53,48 @@ def game_details(request, pk):
     return render(request, 'game_store_templates/game_description.html', context)
 
 
+# class EditGameView(views.UpdateView, auth_mixins.LoginRequiredMixin, auth_mixins.PermissionRequiredMixin):
+#     model = Games
+#     permission_required = 'game_store.add_games'
+#     template_name = 'game_store_templates/edit_game.html'
+#     form_class = EditGameForm
+#
+#     def get_success_url(self):
+#         return reverse_lazy('dashboard')
 
-class EditGameView(views.UpdateView, auth_mixins.LoginRequiredMixin, auth_mixins.PermissionRequiredMixin):
-    pass
+
+def edit_game_view(request, pk):
+    game = Games.objects.get(pk=pk)
+    if request.method == "POST":
+        form = EditGameForm(request.POST, request.FILES, instance=game)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = EditGameForm(instance=game)
+
+    context = {
+        'game': game,
+        'form': form,
+    }
+
+    return render(request, 'game_store_templates/edit_game.html', context)
 
 
-class DeleteGameView(views.UpdateView, auth_mixins.LoginRequiredMixin, auth_mixins.PermissionRequiredMixin):
-    pass
+def delete_game_view(request, pk):
+    game = Games.objects.get(pk=pk)
+    if request.method == "POST":
+        form = DeleteGameForm(request.POST, instance=game)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = DeleteGameForm(request.POST, instance=game)
+
+    context = {
+        'game': game,
+        'form': form,
+    }
+
+    return render(request, 'game_store_templates/delete_game.html', context)
+

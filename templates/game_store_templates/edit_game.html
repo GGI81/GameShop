@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Shop</title>
+    <link rel="icon" href="/static/images/head_icon.ico">
+    <link rel="stylesheet" href="/static/css/store/edit_game.css">
+</head>
+<body>
+<nav>
+    <p>Game Shop</p>
+</nav>
+
+<section id="edit_game">
+    <form action="{% url 'edit game' game.pk %}" method="post" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Edit Game</legend>
+            {{ form }}
+            {% csrf_token %}
+            <br>
+            <a href="{% url 'dashboard' %}">Go back</a>
+            <button>Save</button>
+        </fieldset>
+    </form>
+</section>
+</body>
+</html>

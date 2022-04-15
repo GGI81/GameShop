@@ -45,7 +45,12 @@
     <div id="games_container">
         {% for game in games %}
             <div class="game">
-                <img src="{{ game.image.url }}" alt="Error">
+                {% if game.image %}
+                    <img src="{{ game.image.url }}" alt="Error">
+                {% else %}
+                    <img src="/static/images/no_game_imgae.jpg" alt="Error">
+                {% endif %}
+
                 <h3>Name: {{ game.name }}</h3>
                 <h4>Price: {{ game.price }}$</h4>
                 {% if request.user.is_authenticated and not request.user.is_staff %}
@@ -53,8 +58,8 @@
                     <a href="#" id="buy_current_game">Buy game</a>
                 {% endif %}
                 {% if request.user.is_staff %}
-                    <a href="#" id="editing_as_admin">Edit Game</a>
-                    <a href="#" id="deleting_as_admin">Delete Game</a>
+                    <a href="{% url 'edit game' game.pk %}" id="editing_as_admin">Edit Game</a>
+                    <a href="{% url 'delete game' game.pk %}" id="deleting_as_admin">Delete Game</a>
                 {% endif %}
                 <br>
                 <br>

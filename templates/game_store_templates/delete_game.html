@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Shop</title>
+    <link rel="icon" href="/static/images/head_icon.ico">
+    <link rel="stylesheet" href="/static/css/store/delete_game.css">
+</head>
+<body>
+<nav>
+    <p>Game Shop</p>
+</nav>
+
+<h1>
+    Are you sure you want to delete this game?
+</h1>
+<br>
+<br>
+<form method="post" action="{% url 'delete game' game.pk %}">
+    {% csrf_token %}
+    {{ form }}
+    <a href="{% url 'dashboard' %}">Go back</a>
+    <button>Delete</button>
+</form>
+</body>
+</html>
