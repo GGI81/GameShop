@@ -5,7 +5,8 @@ from django.contrib.auth import mixins as auth_mixins
 from Game_store_project.game_store.models import Games
 from django.contrib.auth.decorators import login_required
 from Game_store_project.auth_app.models import UserProfile
-from Game_store_project.game_store.forms import CreatingGameForm, EditGameForm, DeleteGameForm
+from Game_store_project.game_store.forms import CreatingGameForm, EditGameForm, DeleteGameForm, GiveFeedbackForm, \
+    AskAdmin
 
 
 class IndexView(views.View):
@@ -21,8 +22,6 @@ class DashboardView(views.ListView, auth_mixins.LoginRequiredMixin):
     model = Games
     template_name = 'game_store_templates/dashboard.html'
     context_object_name = 'games'
-
-
 
 
 class AddGameView(views.CreateView, auth_mixins.LoginRequiredMixin, auth_mixins.PermissionRequiredMixin):
@@ -131,5 +130,33 @@ def owned_games_view(request):
     return render(request, 'game_store_templates/bought_games.html', context)
 
 
+class FeedbackView(views.View, auth_mixins.LoginRequiredMixin):
+    @staticmethod
+    def get(request):
+        form = GiveFeedbackForm
+        context = {
+            'form': form,
+        }
+
+        return render(request, 'game_store_templates/feedback.html', context)
+
+
 class NoPermissionTemplate(views.TemplateView):
     template_name = 'game_store_templates/template_for_no_permission.html'
+
+
+
+def admin_ask_view(request):
+    if request.method == "POST":
+        form = AskAdmin(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = AskAdmin(request.POST)
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'game_store_templates/adminstext.html', context)

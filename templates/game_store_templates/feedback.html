@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Shop</title>
+    <link rel="icon" href="/static/images/head_icon.ico">
+    <link rel="stylesheet" href="/static/css/store/feedback.css">
+</head>
+<body>
+<nav>
+    <p>Game Shop</p>
+</nav>
+<h1>
+    Your Feedback is important for us.
+</h1>
+<br>
+<br>
+<form method="post" action="{% url 'feedback given' %}">
+    <fieldset>
+        <legend>Edit Profile</legend>
+        {{ form }}
+        {% csrf_token %}
+        <br>
+        <a href="{% url 'dashboard' %}">Go back</a>
+        <button>Send</button>
+        <a href="{% url 'ask admin' %}">Ask Admin</a>
+    </fieldset>
+</form>
+</body>
+</html>

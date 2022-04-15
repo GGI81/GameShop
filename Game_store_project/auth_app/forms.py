@@ -1,6 +1,6 @@
 from django import forms
 from django.core.validators import MinLengthValidator
-from Game_store_project.auth_app.models import UserProfile
+from Game_store_project.auth_app.models import UserProfile, MoreInfo
 from django.contrib.auth import forms as auth_forms, get_user_model
 from Game_store_project.auth_app.validtors import validate_only_letters
 from Game_store_project.auth_app.common.custom_mixins import BootstrapFormMixin
@@ -87,3 +87,13 @@ class ChangePasswordForm(auth_forms.PasswordChangeForm):
         super(ChangePasswordForm, self).__init__(*args, **kwargs)
         self.fields['new_password1'].help_text = None
         self.fields['new_password2'].help_text = None
+
+
+class AddMoreInfo(BootstrapFormMixin, forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._init_bootstrap_form_controls()
+
+    class Meta:
+        model = MoreInfo
+        fields = '__all__'

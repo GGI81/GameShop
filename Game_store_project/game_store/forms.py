@@ -1,7 +1,6 @@
 from django import forms
 from django.core.validators import MinValueValidator
-
-from Game_store_project.game_store.models import Games
+from Game_store_project.game_store.models import Games, Feedback, ContactAdmins
 from Game_store_project.auth_app.common.custom_mixins import BootstrapFormMixin
 
 
@@ -70,3 +69,24 @@ class DeleteGameForm(BootstrapFormMixin, forms.ModelForm):
     class Meta:
         model = Games
         fields = ()
+
+
+class GiveFeedbackForm(BootstrapFormMixin, forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._init_bootstrap_form_controls()
+
+    class Meta:
+        model = Feedback
+        fields = '__all__'
+
+
+class AskAdmin(BootstrapFormMixin, forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self._init_bootstrap_form_controls()
+
+    class Meta:
+        model = ContactAdmins
+        fields = '__all__'
+

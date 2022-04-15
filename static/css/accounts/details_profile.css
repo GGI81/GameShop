@@ -69,8 +69,8 @@ nav ul li ul li a:hover {
 }
 
 div {
+    text-align: center;
     margin-top: 150px;
-    margin-left: 820px;
 }
 
 img {
@@ -106,6 +106,30 @@ div a:hover {
 
 #change {
     background-color: #545252; /* Gray */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin-left: 40px;
+}
+
+#add_info {
+    background-color: rgba(101, 26, 250, 0.68);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin-left: 40px;
+}
+
+#see_info {
+    background-color: rgba(101, 26, 250, 0.68);
     border: none;
     color: white;
     padding: 15px 32px;

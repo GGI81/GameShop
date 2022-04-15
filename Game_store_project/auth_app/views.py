@@ -5,7 +5,7 @@ from django.contrib.auth import mixins as auth_mixins
 from django.contrib.auth.decorators import login_required
 from Game_store_project.auth_app.models import UserProfile
 from django.contrib.auth import views as auth_views, login
-from Game_store_project.auth_app.forms import CreateProfileForm, EditProfileForm, ChangePasswordForm
+from Game_store_project.auth_app.forms import CreateProfileForm, EditProfileForm, ChangePasswordForm, AddMoreInfo
 
 
 # CBV
@@ -47,8 +47,28 @@ class ProfileDetailsView(views.DetailView, auth_mixins.LoginRequiredMixin):
     model = UserProfile
     template_name = 'accounts_templates/profile_details.html'
 
+@login_required()
+def add_more_profile_info_view(request, pk):
+    profile = UserProfile.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = AddMoreInfo(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = AddMoreInfo(instance=profile)
 
-# Todo => have to correct code to be able to upload images after editing profile
+    context = {
+        'form': form,
+        'profile': profile,
+    }
+
+    return render(request, 'accounts_templates/add_more_profile_info.html', context)
+
+
+class MoreProfileInfo(views.TemplateView, auth_mixins.LoginRequiredMixin):
+    template_name = 'accounts_templates/profile_more_info.html'
+
 
 
 class ChangePasswordView(auth_views.PasswordChangeView, auth_mixins.LoginRequiredMixin):
@@ -59,7 +79,6 @@ class ChangePasswordView(auth_views.PasswordChangeView, auth_mixins.LoginRequire
         return reverse_lazy('dashboard')
 
 
-# FBV
 @login_required()
 def add_funds_view(request, pk):
     profile = UserProfile.objects.get(pk=pk)

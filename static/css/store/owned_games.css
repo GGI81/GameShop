@@ -167,19 +167,8 @@ hr {
     transition: box-shadow 0.10ms;
 }
 
-h3 {
-    text-align: center;
-    font-size: 30px;
-}
-
-img {
-    border-color: black;
-    border-style: solid;
-    border-radius: 5px;
-    margin-left: 950px;
-}
-
-#go_to_the_shop {
+#buy_current_game {
+    margin-top: 10px;
     background-color: rgb(54, 171, 41);
     border: none;
     color: black;
@@ -188,10 +177,10 @@ img {
     text-decoration: none;
     display: inline-block;
     font-size: 18px;
-    margin-left: 970px;
+    margin-right: 20px;
 }
 
-#go_to_the_shop:hover {
+#buy_current_game:hover {
     box-shadow: 5px 5px 20px #000000;
     transition: box-shadow 0.10ms;
 }

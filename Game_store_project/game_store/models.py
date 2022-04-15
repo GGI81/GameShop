@@ -30,3 +30,24 @@ class Games(models.Model):
         ),
     )
 
+
+class Feedback(models.Model):
+    NICE_RATE = 'Nice'
+    MAYBE = 'Maybe'
+    BAD = 'Bad'
+    MAX_LEN = 20
+
+    rate = models.CharField(
+        max_length=MAX_LEN,
+        choices=(
+            (NICE_RATE, 'Nice'),
+            (MAYBE, 'Maybe'),
+            (BAD, 'Bad'),
+        ),
+    )
+
+    feedback = models.TextField()
+
+
+class ContactAdmins(models.Model):
+    text = models.TextField()

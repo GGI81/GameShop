@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Game Shop</title>
     <link rel="icon" href="/static/images/head_icon.ico">
-    <link rel="stylesheet" href="/static/css/accounts/details.css">
+    <link rel="stylesheet" href="/static/css/accounts/details_profile.css">
 </head>
 <body>
 <nav>
@@ -13,8 +13,11 @@
         <li><a href="{% url 'dashboard' %}">Shop</a></li>
         {% if not request.user.is_staff %}
             <li><a href="{% url 'owned games' %}">My Library</a></li>
+            <li><a href="{% url 'feedback given' %}">Feedback</a></li>
         {% endif %}
-        <li><a href="#">Contacts</a></li>
+        {% if request.user.is_staff %}
+            <li><a href="{% url 'add game' %}">Add New Game</a></li>
+        {% endif %}
         <li><a>Profile</a>
             <ul>
                 <li><a href="{% url 'details' request.user.id %}">Details</a></li>
@@ -24,9 +27,6 @@
                 <li><a href="{% url 'user logout' %}">Logout</a></li>
             </ul>
         </li>
-        {% if request.user.is_staff %}
-            <li><a href="{% url 'add game' %}">Add New Game</a></li>
-        {% endif %}
     </ul>
 </nav>
 <div>
@@ -48,6 +48,12 @@
     <br>
     <a href="{% url 'edit profile' request.user.id %}" id="edit">Edit</a>
     <a href="{% url 'change password' %}" id="change">Change Password</a>
+    {% if not object.more_info %}
+        <a href="{% url 'add more info' request.user.id %}" id="add_info">Add info</a>
+    {% else %}
+        <a href="{% url 'more info' %}" id="see_info">See more info</a>
+    {% endif %}
 </div>
+
 </body>
 </html>

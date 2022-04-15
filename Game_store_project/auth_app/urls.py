@@ -1,6 +1,6 @@
 from django.urls import path
 from Game_store_project.auth_app.views import UserRegisterView, UserLoginView, UserLogoutView, ProfileDetailsView, \
-    EditProfileView, add_funds_view, ChangePasswordView
+    EditProfileView, add_funds_view, ChangePasswordView, add_more_profile_info_view, MoreProfileInfo
 
 urlpatterns = (
     path('registration/', UserRegisterView.as_view(), name='user registration'),
@@ -8,9 +8,12 @@ urlpatterns = (
     path('logout/', UserLogoutView.as_view(), name='user logout'),
 
     path('profile-details/<int:pk>/', ProfileDetailsView.as_view(), name='details'),
-    path('profile/edit/<int:pk>', EditProfileView.as_view(), name='edit profile'),
-    path('profile/add-funds/<int:pk>', add_funds_view, name='add funds'),
-    path('profile/change-password/', ChangePasswordView.as_view(), name='change password')
+    path('profile/edit/<int:pk>/', EditProfileView.as_view(), name='edit profile'),
+    path('profile/add-more-info/<int:pk>/', add_more_profile_info_view, name='add more info'),
+    path('profile/more-info/', MoreProfileInfo.as_view(), name='more info'),
+
+    path('profile/add-funds/<int:pk>/', add_funds_view, name='add funds'),
+    path('profile/change-password/', ChangePasswordView.as_view(), name='change password'),
 
     # path('password-reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),
 )

@@ -38,6 +38,29 @@ class GameStoreUser(auth_models.AbstractBaseUser, auth_models.PermissionsMixin):
     objects = AppUserManager()
 
 
+class MoreInfo(models.Model):
+    SOFIA = 'Sofia'
+    PLOVDIV = 'Plovdiv'
+    VARNA = 'Varna'
+    BURGAS = 'Burgas'
+    PLEVEN = 'Pleven'
+    OTHER = 'Other'
+
+    city = models.CharField(
+        max_length=20,
+        choices=(
+            (SOFIA, 'Sofia'),
+            (PLOVDIV, 'Plovdiv'),
+            (VARNA, 'Varna'),
+            (BURGAS, 'Burgas'),
+            (PLEVEN, 'Pleven'),
+            (OTHER, 'Other'),
+        ),
+    )
+
+    hobbies = models.TextField()
+
+
 class UserProfile(models.Model):
     USERNAME_MAX_LEN = 15
 
@@ -87,6 +110,13 @@ class UserProfile(models.Model):
         Games,
     )
 
+    more_info = models.ForeignKey(
+        MoreInfo,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+    )
+
     user = models.OneToOneField(
         GameStoreUser,
         on_delete=models.CASCADE,
@@ -96,4 +126,6 @@ class UserProfile(models.Model):
     @property
     def get_full_name(self):
         return f"{self.first_name} {self.last_name}"
+
+
 

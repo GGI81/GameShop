@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Shop</title>
+    <link rel="icon" href="/static/images/head_icon.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        body {
+            background-color: rgba(10, 80, 140, 0.68);
+            /*background-image: url("/static/images/index_background.jpg");*/
+        }
+
+        nav {
+            width: 100%;
+            height: 80px;
+            background-color: white;
+        }
+
+        nav p {
+            font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+            color: #222;
+            font-size: 24px;
+            line-height: 55px;
+            float: left;
+            padding: 10px 20px;
+            margin-right: 30px;
+        }
+
+
+        fieldset {
+            margin-top: 150px;
+            background-color: #71984c;
+            width: 500px;
+            margin-left: 780px;
+            /*margin-right: 700px;*/
+        }
+
+        legend {
+            background-color: gray;
+            color: white;
+            padding: 5px 10px;
+        }
+
+        #edit_profile {
+            font-family: "Lato", serif;
+            font-size: 20px;
+            color: #e1dada;
+            padding: 1em 0 10em;
+        }
+
+        input, input + label > i, textarea, select {
+            border-radius: 3px;
+            box-shadow: none;
+            border: 1px solid #000000;
+            background: #ffffff;
+            display: block;
+            width: 97%;
+            color: #000000;
+            transition: all 0.3s ease;
+            margin: 6px;
+            padding: 4px;
+            align-content: center;
+        }
+
+        button {
+            background-color: #008CBA;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        a {
+            background-color: #008CBA; /* Green */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        a:hover {
+            box-shadow: 5px 5px 20px #000000;
+            transition: box-shadow 0.7ms;
+        }
+
+        button:hover {
+            box-shadow: 5px 5px 20px #000000;
+            transition: box-shadow 0.7ms;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <p>Game Shop</p>
+</nav>
+
+
+<section id="edit_profile">
+    <form action="{% url 'add more info' request.user.id %}" method="post">
+        <fieldset>
+            <legend>Tell us about you</legend>
+            {{ form }}
+            {% csrf_token %}
+            <br>
+            <a href="{% url 'details' request.user.id %}">Go back</a>
+            <button>Save</button>
+        </fieldset>
+    </form>
+</section>
+
+</body>
+</html>
