@@ -1,0 +1,1 @@
+web: gunicorn Game_store_project.wsgi

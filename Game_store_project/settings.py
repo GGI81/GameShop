@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.urls import reverse_lazy
@@ -142,9 +143,14 @@ STATICFILES_DIRS = [
 ]  # Adding static files to our Project
 
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 
 LOGIN_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = reverse_lazy('index')
+
+django_heroku.settings(locals())
