@@ -88,6 +88,7 @@ def delete_game_view(request, pk):
     return render(request, 'game_store_templates/delete_game.html', context)
 
 
+@login_required()
 def buy_game_view(request, pk):
     game = Games.objects.get(pk=pk)
     profile = UserProfile.objects.get(pk=request.user.id)
