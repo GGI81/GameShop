@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Game Shop</title>
     <link rel="icon" href="/static/images/head_icon.ico">
-    <link rel="stylesheet" href="/static/css/store/dashboard.css">
+    <link rel="stylesheet" href="/static/css/store/dashboardstyle.css">
 </head>
 <body>
 <nav>
@@ -34,6 +34,11 @@
             </li>
             </ul>
         {% endif %}
+    {% if request.user.is_authenticated %}
+        {% if not request.user.is_staff %}
+            <h4>Hello {{ profile.get_full_name }}</h4>
+        {% endif %}
+    {% endif %}
 </nav>
 
 <br>

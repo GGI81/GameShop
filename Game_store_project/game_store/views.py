@@ -23,6 +23,11 @@ class DashboardView(views.ListView, auth_mixins.LoginRequiredMixin):
     template_name = 'game_store_templates/dashboard.html'
     context_object_name = 'games'
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['profile'] = UserProfile.objects.get(pk=self.request.user.id)
+        return context
+
 
 class AddGameView(views.CreateView, auth_mixins.LoginRequiredMixin, auth_mixins.PermissionRequiredMixin):
     template_name = 'game_store_templates/add_game.html'

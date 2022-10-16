@@ -189,3 +189,12 @@ hr {
     box-shadow: 5px 5px 20px #000000;
     transition: box-shadow 0.10ms;
 }
+
+nav {
+    display: flex;
+    align-items: center;
+}
+nav h4 {
+    margin-left: 1300px;
+    text-decoration: underline;
+}
