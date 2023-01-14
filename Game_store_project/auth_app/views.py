@@ -88,22 +88,24 @@ def add_funds_view(request, pk):
     twenty = 'Add 20$'
     fifty = 'Add 50$'
 
+    redirect_url = redirect('dashboard')
+
     if request.GET.get('Five') == five:
         profile.wallet += 5
         profile.save()
-        return redirect('dashboard')
+        return redirect_url
     elif request.GET.get('Ten') == ten:
         profile.wallet += 10
         profile.save()
-        return redirect('dashboard')
+        return redirect_url
     elif request.GET.get('Twenty') == twenty:
         profile.wallet += 20
         profile.save()
-        return redirect('dashboard')
+        return redirect_url
     elif request.GET.get('Fifty') == fifty:
         profile.wallet += 50
         profile.save()
-        return redirect('dashboard')
+        return redirect_url
 
     return render(request, 'accounts_templates/add_funds.html')
 
